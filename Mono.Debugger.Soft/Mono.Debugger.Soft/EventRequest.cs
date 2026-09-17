@@ -40,6 +40,16 @@ namespace Mono.Debugger.Soft
 			}
 		}
 
+		public SuspendPolicy SuspendPolicy {
+			get {
+				return suspend;
+			}
+			set {
+				CheckDisabled ();
+				suspend = value;
+			}
+		}
+
 		public bool Enabled {
 			get {
 				return enabled;
@@ -107,7 +117,7 @@ namespace Mono.Debugger.Soft
 				SetEnabled (id);
 			}
 		}
-				
+
 		public virtual void Enable () {
 			SendReq (new List<Modifier> ());
 		}
